@@ -4,7 +4,12 @@ import { BodyCardsDto, HeaderCardsDto } from './dtos/dashboard.dto';
 @Injectable()
 export class DashboardService {
   getHeaderCards() {
-    const headerData: HeaderCardsDto[] = [{ num: 11 }, { num: 22 }, { num: 33 }, { num: 44 }];
+    const headerData: HeaderCardsDto = {
+      allOrders: 150,
+      openOrders: 5,
+      openBranchs: 4,
+      avgTreatTime: 0.5,
+    };
     return headerData;
   }
 

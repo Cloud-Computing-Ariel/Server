@@ -1,5 +1,8 @@
 export class HeaderCardsDto {
-  num: number;
+  allOrders: number;
+  openOrders: number;
+  avgTreatTime: number;
+  openBranchs: number;
 }
 
 interface DistributionByArea {
