@@ -1,8 +1,11 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { AnalyzeService } from './analyze.service';
 import { AnalyzeDTO } from './dtos/analyze.dto';
 
 @Controller('analyze')
 export class AnalyzeController {
+  constructor(private readonly analyzeService: AnalyzeService) {}
+
   @Post()
   getSearchResults(@Body() body: AnalyzeDTO) {
     console.log(body);
