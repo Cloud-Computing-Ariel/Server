@@ -1,27 +1,18 @@
 export class HeaderCardsDto {
-  allOrders: number;
-  openOrders: number;
-  avgTreatTime: number;
-  openBranchs: number;
-}
-
-interface DistributionByArea {
-  areas: string[];
-}
-interface TopBranches {
-  branches: string[];
-}
-interface TopToppings {
-  toppings: string[];
-}
-interface NumberOfOrderByTime {
-  orders: number[];
-  time: Date[];
+  totalOpenOrders: number;
+  totalOrders: number;
+  openStores: number;
+  avgTimeSpent: number;
 }
 
 export class BodyCardsDto {
-  byArea: DistributionByArea;
-  topBranches: TopBranches;
-  topToppings: TopToppings;
-  byTime: NumberOfOrderByTime;
+  topToppingsOrdered: BodyCardData;
+  topBranchesLowestWaitTime: BodyCardData;
+  DistriByArea: BodyCardData;
+  numberOfOrders: BodyCardData;
+}
+
+interface BodyCardData {
+  data: number[];
+  categories: string[];
 }
