@@ -17,6 +17,7 @@ export class DashboardGateway {
 
   @SubscribeMessage('onDashboardUpdate')
   handleUpdate(@ConnectedSocket() client: Socket, @MessageBody() data: unknown): WsResponse<unknown> {
+    // we can remove this function when the data will be dynamic and real.
     const event = 'onDashboardUpdate';
     const headerCardsData: HeaderCardsDto = {
       totalOpenOrders: 2,
