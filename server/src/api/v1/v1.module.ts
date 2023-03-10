@@ -6,9 +6,10 @@ import { SearchService } from './search/search/search.service';
 import { AnalyzeController } from './analyze/analyze.controller';
 import { AnalyzeService } from './analyze/analyze.service';
 import { DashboardGateway } from './gateways/dashboard/dashboard.gateway';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports: [],
+  imports: [HttpModule],
   providers: [DashboardService, SearchService, AnalyzeService, DashboardGateway],
   controllers: [DashboardController, SearchController, AnalyzeController],
 })
