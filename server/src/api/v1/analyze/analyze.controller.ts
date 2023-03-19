@@ -1,10 +1,18 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { query } from 'express';
 import { AnalyzeService } from './analyze.service';
 import { AnalyzeDTO } from './dtos/analyze.dto';
 
 @Controller('analyze')
 export class AnalyzeController {
   constructor(private readonly analyzeService: AnalyzeService) {}
+
+
+
+  @Get('/header-cards')
+  async getHeaderCards(@Query('start')start:string,@Query('end')end:string) {
+    return await this.analyzeService.getAnalyzeData(start,end)
+  }
 
   @Post()
   getSearchResults(@Body() body: AnalyzeDTO) {
