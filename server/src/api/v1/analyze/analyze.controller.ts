@@ -15,7 +15,7 @@ export class AnalyzeController {
   }
 
   @Post()
-  getSearchResults(@Body() body: AnalyzeDTO) {
+  getAnalyzeResults(@Body() body: AnalyzeDTO) {
     console.log(body);
     // TODO: Return real data using this format. an array of objects
     return [
