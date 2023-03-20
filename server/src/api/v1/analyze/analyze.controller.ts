@@ -15,14 +15,8 @@ export class AnalyzeController {
 
   @Post()
   getAnalyzeResults(@Body() body: AnalyzeDTO) {
-    const t = this.http
+    return this.http
       .get(`http://localhost:3004/?from=${body.fromDate}&to=${body.toDate}`)
       .pipe(map((data) => data.data));
-    t.subscribe({
-      next: (d) => {
-        console.log(d);
-      },
-    });
-    return t;
   }
 }
