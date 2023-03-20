@@ -9,13 +9,13 @@ export class AnalyzeController {
 
 
 
-  @Get('/header-cards')
-  async getHeaderCards(@Query('start')start:string,@Query('end')end:string) {
-    return await this.analyzeService.getAnalyzeData(start,end)
+  @Get('/Model')
+  async getModel(@Query('start')start:string,@Query('end')end:string) {
+    return  this.analyzeService.getAnalyzeData(start,end)
   }
 
   @Post()
-  getAnalyzeResults(@Body() body: AnalyzeDTO) {
+  getSearchResults(@Body() body: AnalyzeDTO) {
     console.log(body);
     // TODO: Return real data using this format. an array of objects
     return [
