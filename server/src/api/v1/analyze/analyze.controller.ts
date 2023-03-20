@@ -9,8 +9,8 @@ export class AnalyzeController {
   constructor(private readonly analyzeService: AnalyzeService, private readonly http: HttpService) {}
 
   @Get('/Model')
-  async getModel(@Query('start')start:string,@Query('end')end:string) {
-    return  this.analyzeService.getAnalyzeData(start,end)
+  async getModel(@Query('start') start: string, @Query('end') end: string) {
+    return this.analyzeService.getAnalyzeData(start, end);
   }
 
   @Post()
