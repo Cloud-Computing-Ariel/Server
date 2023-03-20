@@ -1,6 +1,5 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { DashboardService } from './dashboard.service';
-import { BodyCardsDto, HeaderCardsDto } from './dtos/dashboard.dto';
 import { DashboardGateway } from '../gateways/dashboard/dashboard.gateway';
 
 @Controller('dashboard')
@@ -11,13 +10,13 @@ export class DashboardController {
   ) {}
 
   @Post('/update-header-cards')
-  updateHeaderCards(@Body() body: HeaderCardsDto) {
+  updateHeaderCards(@Body() body: any) {
     this.dashboardGateway.server.emit('onHeaderCardsUpdate', body);
     return { isSuccess: true };
   }
 
   @Post('/update-body-cards')
-  updateBodyCards(@Body() body: BodyCardsDto) {
+  updateBodyCards(@Body() body: any) {
     this.dashboardGateway.server.emit('onBodyCardsUpdate', body);
     return { isSuccess: true };
   }

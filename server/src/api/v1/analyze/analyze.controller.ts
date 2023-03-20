@@ -1,28 +1,24 @@
+import { HttpService } from '@nestjs/axios';
 import { Body, Controller, Post } from '@nestjs/common';
+import { map } from 'rxjs';
 import { AnalyzeService } from './analyze.service';
 import { AnalyzeDTO } from './dtos/analyze.dto';
 
 @Controller('analyze')
 export class AnalyzeController {
-  constructor(private readonly analyzeService: AnalyzeService) {}
+  constructor(private readonly analyzeService: AnalyzeService, private readonly http: HttpService) {}
 
   @Post()
   getAnalyzeResults(@Body() body: AnalyzeDTO) {
-    console.log(body);
-    // TODO: Return real data using this format. an array of objects
-    return [
-      {
-        confidence: '69%',
-        support: '75%',
-        consequent: 'Olives',
-        antecedent: 'Onions',
+    const t = this.http
+      .get(`http://localhost:3004/?from=${body.fromDate}&to=${body.toDate}`)
+      .pipe(map((data) => data.data));
+    t.subscribe({
+      next: (d) => {
+        console.log(d);
       },
-      {
-        confidence: '55%',
-        support: '13%',
-        consequent: 'Pineaplles',
-        antecedent: 'Melon',
-      },
-    ];
+    });
+
+    return t;
   }
 }
